@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML5 calculator</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7433512630048456"
+     crossorigin="anonymous"></script>
+    </head>
+    <body>
+     <table>
+    <tr>
+<th colspan="4"><div></div>
+<hr></th>
+    </tr>
+    <tr>
+<td><button class="num">(</button></td>
+<td><button class="num">)</button></td>
+<td><button class="num" id="percent">%</button></td>
+<td><button class="num" id="clear">AC</button></td>
+    </tr>
+    <tr>
+<td><button class="num">7</button></td>
+<td><button class="num">8</button></td>
+<td><button class="num">9</button></td>
+<td><button class="num" id="div">÷</button></td>
+    </tr>
+    <tr>
+<td><button class="num">4</button></td>
+<td><button class="num">5</button></td>
+<td><button class="num">6</button></td>
+<td><button class="num" id="mul">×</button></td>
+    </tr>
+   <tr>
+<td><button class="num">1</button></td>
+<td><button class="num">2</button></td>
+<td><button class="num">3</button></td>
+<td><button class="num">-</button></td>
+    </tr> 
+    <tr>
+<td><button class="num">0</button></td>
+<td><button class="num">.</button></td>
+<td><button id="equals">=</button></td>
+<td><button class="num">+</button></td>
+    </tr>
+    <tr>
+<td><button class="num" id="sin">sin</button></td>
+<td><button class="num" id="cos">cos</button></td> 
+<td><button class="num" id="tan">tan</button></td> 
+<td><button class="num" id="log">log</button></td>
+</tr>
+     </table> 
+<p>Choose color for buttons</p>
+    <input type="color" onchange="ch()" id="color">
+    <br />     
+  <script>  
+var nums = document.querySelectorAll(".num")
+var display = document.querySelector("div")
+for(let i = 0;i < nums.length;i++){
+nums[i].addEventListener("click",disp)
+}
+function disp(){
+toDeg = display.innerHTML * (180/Math.PI);
+    //alert(this.className+"\n"+this.id)
+display = document.querySelector("div")
+if(this.id==""){
+display.innerHTML+=this.innerHTML
+}
+if (this.id == "clear"){
+display.innerHTML =""
+}
+if (this.id == "mul"){
+display.innerHTML+="×"
+}
+if (this.id == "div"){
+display.innerHTML+="/"
+}
+if (this.id == "percent"){
+display.innerHTML+="/100"
+}
+if (this.id =="sin"){
+
+display.innerHTML+="sin("
+}
+if (this.id =="cos"){
+
+display.innerHTML+="cos("
+}
+if (this.id =="tan"){
+
+display.innerHTML+="tan("
+}
+if (this.id =="log"){
+
+display.innerHTML+="log("
+}
+}
+var equals = document.querySelector("#equals")
+equals.onclick = function (){
+try{
+display.innerHTML = display.innerHTML.replace(/×/g,'*')
+display.innerHTML = display.innerHTML.replace(/sin/g,'Math.sin')
+display.innerHTML = display.innerHTML.replace(/cos/g,'Math.cos')
+display.innerHTML = display.innerHTML.replace(/tan/g,'Math.tan')
+display.innerHTML = display.innerHTML.replace(/log/g,'Math.log10')
+display.innerHTML=parseFloat(eval(display.innerHTML)) 
+}catch(err){
+    display.innerHTML ="Invalid operation"
+setTimeout(function(){
+display.innerHTML =""
+},600)    
+}
+}
+
+function ch(){
+var btns = document.querySelectorAll("button")
+var inp = document.querySelector("#color");
+for (let i = 0;i < btns.length;i++){
+btns[i].style['background-color']= inp.value
+}
+}
+  </script> 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7433512630048456"
+     crossorigin="anonymous"></script>
+    </body>
+</html>
